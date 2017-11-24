@@ -6,7 +6,7 @@ object Option {
 
   implicit val optionFunctor: Functor[Option] = new Functor[Option] {
     def map[A, B](ta: Option[A])(f: A => B): Option[B] = ta match {
-      case None => None
+      case None    => None
       case Some(a) => Some(f(a))
     }
   }
@@ -14,7 +14,7 @@ object Option {
   implicit val optionMonad: Monad[Option] = new Monad[Option] {
     def pure[A](a: A): Option[A] = Some(a)
     def flatMap[A, B](ta: Option[A])(f: A => Option[B]): Option[B] = ta match {
-      case None => None
+      case None    => None
       case Some(a) => f(a)
     }
   }
